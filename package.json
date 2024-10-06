@@ -5,6 +5,7 @@
     "body-parse": "^0.1.0",
     "cors": "^2.8.5",
     "express": "^4.21.0",
+    "firebaseui": "^6.1.0",
     "jsonwebtoken": "^9.0.2",
     "mysql": "^2.18.1"
   }
