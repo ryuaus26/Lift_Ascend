@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lift Ascend Header</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="http://localhost//LiftAscend//Code//CSS//Home.css">
+    <meta name="google-signin-client_id" content="312792000712-s6o4de97hhteevajm5v2vubmu1013aj8.apps.googleusercontent.com">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+</head>
+<body>
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <img src="http://localhost/LiftAscend/Images/Header/Logo.PNG" alt="Lift Ascend logo">
+            </div>
+        
+            <nav class="nav">
+                <a href="#">About Us</a>
+                <a href="#">Data</a>
+                <a href="#">Contact</a>
+            </nav>
+
+
+           
+
+            <div class="right-section">    
+                <div class="login-container">
+                    <div class="login-container">
+                       
+                                <div class="g-signin2" data-onsuccess="onSignIn" signInFlow="redirect">
+
+                                </div>
+
+                                <div class ="data">
+                                    <p>Name: </p>
+                                    <p id = "name" class ="alert alert-success"></p>
+                                    <button type="button" class="btn btn-danger" onclick="signOut()";>Sign out</button>
+                                </div>
+                            </div>
+                       
+                    </div>
+                    
+                </div>
+                
+
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                
+                <div class="weight-unit">
+                    <button class="weight-unit-btn">lbs ▼</button>
+                    <div class="weight-unit-content">
+                        <a href="#">lbs</a>
+                        <a href="#">kgs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        
+    </header>
+
+    <div class="search-bar-container">
+        <input type="text" class="search-bar" placeholder="Search for lifters...">
+        <button class="search-button">
+            <i class="fas fa-search"></i> Search
+        </button>
+    </div>
+    
+    <div id="tableContainer" style="height: 500px; overflow-y: auto;">
+        <table id="lifterTable">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Lifter</th>
+                    <th>Age</th>
+                    <th>Weight</th>
+                    <th>Squat</th>
+                    <th>Bench</th>
+                    <th>Deadlift</th>
+                    <th>Total</th>
+                    <th>Dots</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+
+            </tbody>
+        </table>
+        
+    </div>
+
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="http://localhost//LiftAscend//Code//Backend//google.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" 
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</body>
+</html>
