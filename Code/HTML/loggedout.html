@@ -25,7 +25,7 @@
                 <a href="#">Data</a>
                 <a href="#">Contact</a>
             </nav>
-
+            <p>login to save your progress and see your friends' profiles!</p>
             <div class="right-section">
                 <div id="login-dropdown" class="dropdown">
                     <div class="dropdown-content" id="form_container">
@@ -68,33 +68,41 @@
         </button>
     </div>
     
-    <div id="tableContainer" style="height: 500px; overflow-y: auto;">
-        <table id="lifterTable">
+   
+    <div id="liftDataInput">
+        <h2>Enter Your Lift Data</h2>
+        <table id="liftDataTable">
             <thead>
                 <tr>
-                    <th>Rank</th>
-                    <th>Lifter</th>
                     <th>Age</th>
-                    <th>Weight</th>
-                    <th>Squat</th>
-                    <th>Bench</th>
-                    <th>Deadlift</th>
-                    <th>Total</th>
-                    <th>Dots</th>
+                    <th>Squat (lbs)</th>
+                    <th>Bench (lbs)</th>
+                    <th>Deadlift (lbs)</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
-            <tbody id="tableBody">
+            <tbody id="liftDataBody">
+                <tr>
+                    <td><input type="number" class="age" placeholder="Age"></td>
+                    <td><input type="number" class="squat" placeholder="Squat"></td>
+                    <td><input type="number" class="bench" placeholder="Bench"></td>
+                    <td><input type="number" class="deadlift" placeholder="Deadlift"></td>
+                    <td><button onclick="removeRow(this)">Remove</button></td>
+                </tr>
             </tbody>
         </table>
+        <button onclick="addRow()">Add Row</button>
+        <button onclick="submitLiftData()">Submit Lift Data</button>
     </div>
 
+    <!-- Move the script to the end of the body -->
     <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-database-compat.js"></script>
-
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-    <script src="http://localhost/LiftAscend/Code/Backend/login.js"></script>
-    <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
+    <script src="http://localhost/LiftAscend/Code/Backend/loggedout.js"></script>
+    <script src="http://localhost/LiftAscend/Code/Backend/addRow.js"></script>
+
 </body>
 </html>
