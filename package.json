@@ -1,12 +1,17 @@
 {
   "dependencies": {
+    "algoliasearch": "^5.8.0",
     "appwrite": "^16.0.2",
     "bcryptjs": "^2.4.3",
     "body-parse": "^0.1.0",
     "cors": "^2.8.5",
-    "express": "^4.21.0",
+    "express": "^4.21.1",
+    "firebase-admin": "^12.6.0",
     "firebaseui": "^6.1.0",
+    "instantsearch.css": "^8.5.1",
+    "instantsearch.js": "^4.74.2",
     "jsonwebtoken": "^9.0.2",
-    "mysql": "^2.18.1"
+    "mysql": "^2.18.1",
+    "typesense": "^1.8.2"
   }
 }

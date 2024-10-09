@@ -4,13 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lift Ascend</title>
+    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="http://localhost/LiftAscend/Code/CSS/home.css">
+    <link rel="stylesheet" href="http://localhost//LiftAscend//Code//CSS//loggedin.css">
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;900&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One+SC&display=swap" rel="stylesheet">
+    
+
 </head>
 
 <body>
@@ -25,28 +28,51 @@
                 <a href="#">Data</a>
                 <a href="#">Contact</a>
             </nav>
-            <p>login to save your progress and see your friends' profiles!</p>
+
+            
+
+            <div id="profile-header-container">
+                
+            
+            <div id="profile-content-container">
+                <h2 id="profile-header">Profile</h2>
+                    <p><strong>Full Name:</strong> <span id="user-full-name"></span></p>
+                    <p><strong>Squat:</strong> <span id="user-squat"></span></p>
+                    <p><strong>Bench:</strong> <span id="user-bench"></span></p>
+                    <p><strong>Deadlift:</strong> <span id="user-deadlift"></span></p>
+                    
+    
+                <div id="button-container">
+                    <button onclick="logout()">Logout</button>
+                </div>
+            </div>
+
+
+        </div>
+
+        <div id="additional-info"> <!-- New container for outside info -->
+            <p><strong>Total:</strong> <span id="user-total"></span></p>
+            <p><strong>DOTS:</strong> <span id="user-dots"></span></p>
+            <p><strong>PLACEHOLDER:</strong> <span id="user-dots"></span></p>
+            <p><strong>PLACEHOLDER:</strong> <span id="user-dots"></span></p>
+        </div>
+
+          
             <div class="right-section">
-                <div class="right-section">
-                    <div id="profile-container" > <!-- Hidden by default -->
-                        <div id="profile-header-container">
-                            <h2 id="profile-header">Profile</h2>
-                        </div>
-                
-                        <div id="profile-content-container">
-                            <p><strong>Full Name:</strong> <span id="user-full-name"></span></p>
-                            <p><strong>Email:</strong> <span id="user-email"></span></p>
-                            <p><strong>Bench:</strong> <span id="user-bench"></span></p>
-                            <p><strong>Squat:</strong> <span id="user-squat"></span></p>
-                            <p><strong>Deadlift:</strong> <span id="user-deadlift"></span></p>
-                
-                            <div id="button-container">
-                                <button onclick="logout()">Logout</button>
-                            </div>
-                        </div>
-                    </div>
+                <div id="profile-container" > <!-- Hidden by default -->
+                    
+            
+                   
                 </div>
+
+                <div id="friend-list-container" style="display: none;"> <!-- Hidden by default -->
+                    <h3>Friends</h3>
+                    <ul id="friend-list"></ul>
                 </div>
+                <button id="toggle-friend-list">Show Friends</button>
+                
+            </div>
+            
 
                 <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
                 
@@ -61,12 +87,26 @@
         </div>
     </header>
 
-    <div class="search-bar-container">
-        <input type="text" class="search-bar" placeholder="Search for lifters...">
-        <button class="search-button">
-            <i class="fas fa-search"></i> Search
-        </button>
-    </div>
+    <div class="ais-SearchBox">
+        <form class="ais-SearchBox-form" novalidate>
+          <input class="ais-SearchBox-input" autocomplete="off" autocorrect="off" autocapitalize="off" placeholder="Search for products" spellcheck="false" maxlength="512" type="search" value="" />
+          <button class="ais-SearchBox-submit" type="submit" title="Submit the search query.">
+            <svg class="ais-SearchBox-submitIcon" xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 40 40">
+              ...
+            </svg>
+          </button>
+          <button class="ais-SearchBox-reset" type="reset" title="Clear the search query." hidden>
+            <svg class="ais-SearchBox-resetIcon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" width="10" height="10">
+              ...
+            </svg>
+          </button>
+          <span class="ais-SearchBox-loadingIndicator" hidden>
+            <svg width="16" height="16" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#444" class="ais-SearchBox-loadingIcon">
+              ...
+            </svg>
+          </span>
+        </form>
+      </div>
     
    
     <div id="liftDataInput">
@@ -101,8 +141,9 @@
     <script src="https://www.gstatic.com/firebasejs/10.14.0/firebase-database-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.js"></script>
     <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/6.0.1/firebase-ui-auth.css" />
-    <script src="http://localhost/LiftAscend/Code/Backend/loggedin.js"></script>
+    <script src="http://localhost//LiftAscend//Code//Backend//loggedin.js"></script>
     <script src="http://localhost/LiftAscend/Code/Backend/addRow.js"></script>
-
+    <script src="http://localhost/LiftAscend/Code/Backend/api.js"></script>
+    <script src="http://localhost//LiftAscend//Code//Backend//search.js"></script>
 </body>
 </html>

@@ -17,10 +17,12 @@ const auth = firebase.auth();
 const database = firebase.database();
 
 // Set up our login function
+
 function login() {
   const email = document.getElementById('email').value;
   const password = document.getElementById('password').value;
-
+  
+  
   if (!validate_email(email) || !validate_password(password)) {
       alert('Email or Password is invalid!');
       return;
@@ -47,41 +49,71 @@ function login() {
 }
 
 
-// Set up our register function
-function register() {
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-  const full_name = document.getElementById('full_name').value;
-
-  if (!validate_email(email) || !validate_password(password)) {
-      alert('Email or Password is Outta Line!!');
-      return;
+// Function to generate a random unique ID
+function generateUniqueId() {
+    return Math.floor(Math.random() * 1000000); // Adjust range as needed
   }
-
-  if (!validate_field(full_name)) {
-      alert('Full Name is Outta Line!!');
-      return;
+  
+  // Function to check if the ID already exists in the database
+  function checkUniqueId(uniqueId) {
+    return database.ref('users').orderByChild('unique_id').equalTo(uniqueId).once('value')
+        .then(snapshot => {
+            return !snapshot.exists(); // Return true if unique
+        });
   }
-
-  auth.createUserWithEmailAndPassword(email, password)
-      .then(function(userCredential) {
-          const user = userCredential.user;
-          const database_ref = database.ref();
-
-          const user_data = {
-              email: email,
-              full_name: full_name,
-              last_login: Date.now()
-          };
-
-          database_ref.child('users/' + user.uid).set(user_data);
-          alert('User Created!!');
-      })
-      .catch(function(error) {
-          const error_message = error.message;
-          alert(error_message);
-      });
-}
+  
+  // Set up our register function
+  async function register() {
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+    const full_name = document.getElementById('full_name').value;
+  
+    if (!validate_email(email) || !validate_password(password)) {
+        alert('Email or Password is Outta Line!!');
+        return;
+    }
+  
+    if (!validate_field(full_name)) {
+        alert('Full Name is Outta Line!!');
+        return;
+    }
+  
+    let uniqueUserId;
+    let isUnique = false;
+  
+    // Keep generating a new ID until a unique one is found
+    while (!isUnique) {
+        uniqueUserId = generateUniqueId();
+        isUnique = await checkUniqueId(uniqueUserId);
+    }
+    
+    auth.createUserWithEmailAndPassword(email, password)
+        .then(function(userCredential) {
+            const user = userCredential.user;
+            const database_ref = database.ref();
+  
+            const user_data = {
+                email: email,
+                full_name: full_name,
+                last_login: Date.now(),
+                unique_id: 1 // Add the unique ID here
+            };
+  
+            // Save the user data under the user's UID in the database
+            database_ref.child('users/' + user.uid).update(user_data)
+                .then(() => {
+                    alert('User Created!!');
+                })
+                .catch((error) => {
+                    console.error("Error saving user data:", error);
+                    alert('Failed to save user data.');
+                });
+        })
+        .catch(function(error) {
+            const error_message = error.message;
+            alert(error_message);
+        });
+  }
 
 // Validate Functions
 function validate_email(email) {

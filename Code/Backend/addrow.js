@@ -1,3 +1,22 @@
+// Your web app's Firebase configuration
+const firebaseConfig = {
+    apiKey: "AIzaSyB5pHK1U6Oy5Ta9oPOcL5LfWXGP_U3838E",
+    authDomain: "liftascend.firebaseapp.com",
+    projectId: "liftascend",
+    storageBucket: "liftascend.appspot.com",
+    messagingSenderId: "403461421933",
+    appId: "1:403461421933:web:52452b598fb853c3cb3864",
+    measurementId: "G-RFR3H01R2N"
+  };
+  
+  // Initialize Firebase
+  firebase.initializeApp(firebaseConfig);
+  
+  // Initialize variables
+  const auth = firebase.auth();
+  const database = firebase.database();
+  
+
 function addRow() {
     const tbody = document.getElementById('liftDataBody');
     const newRow = document.createElement('tr');
